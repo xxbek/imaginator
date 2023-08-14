@@ -11,8 +11,9 @@
   "license": "Apache-2.0",
   "keywords": [],
   "scripts": {
-    "start": "node build/src/index.js",
-    "test": "node build/src/test.js",
+    "start": "tsc && node build/src/index.js",
+    "handler": "tsc && node build/src/testHandler.js",
+    "receiver": "tsc && node build/src/testReceiver.js",
     "dev": "tsc && nodemon",
     "lint": "gts lint",
     "clean": "gts clean",
