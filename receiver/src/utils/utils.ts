@@ -4,7 +4,11 @@ export async function generateUniqueId(): Promise<string> {
   return crypto.randomUUID();
 }
 
-
-export async function prepareResponse(proceedMessage: ResultFromQueue): Promise<responseHandler> {
-  return {info: 'Your number was proceeded', proceedNum: proceedMessage.resultNum}
+export async function prepareResponse(
+  proceedMessage: ResultFromQueue
+): Promise<responseHandler> {
+  return {
+    info: 'Your number was proceeded',
+    proceedNum: proceedMessage.resultNum,
+  };
 }

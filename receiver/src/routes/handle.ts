@@ -1,5 +1,5 @@
 import Router, {Express, Request, Response} from 'express';
-import {getDataFromHandler} from "../controllers/handleController.js";
+import {getDataFromHandler} from '../controllers/handleController.js';
 
 const handleRouter: Express = Router();
 

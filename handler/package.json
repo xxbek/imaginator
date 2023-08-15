@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "handler",
   "version": "0.0.0",
   "description": "",
   "main": "build/src/run.js",
@@ -13,14 +13,7 @@
   "scripts": {
     "start": "node build/src/run.js",
     "handler": "tsc && node build/src/index.js",
-    "build": "tsc",
-    "lint": "gts lint",
-    "clean": "gts clean",
-    "compile": "tsc",
-    "fix": "gts fix",
-    "prepare": "npm run compile",
-    "pretest": "npm run compile",
-    "posttest": "npm run lint"
+    "build": "tsc"
   },
   "devDependencies": {
     "@types/amqplib": "^0.10.1",

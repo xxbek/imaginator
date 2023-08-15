@@ -1,5 +1,5 @@
 import ampq, {Channel, Connection, ConsumeMessage} from 'amqplib';
-import {serializeUserMessageData} from "../utils/utils.js";
+import {serializeUserMessageData} from '../utils/utils.js';
 
 export class RabbitHandler {
   private connection: Connection | null = null;
@@ -38,9 +38,11 @@ export class RabbitHandler {
           async (rabbitMessage: ampq.ConsumeMessage | null) => {
             if (rabbitMessage) {
               const message = rabbitMessage.content.toString();
-              console.log(message)
-              const uniqueMessageId: string = rabbitMessage.properties.correlationId;
-              const userData: ProceedUserData = await serializeUserMessageData(message)
+              console.log(message);
+              const uniqueMessageId: string =
+                rabbitMessage.properties.correlationId;
+              const userData: ProceedUserData =
+                await serializeUserMessageData(message);
               const handlerResult: ResultUserData = await handler(userData);
               if (!handlerResult?.error) {
                 const userResponse: string = JSON.stringify(handlerResult);
@@ -49,9 +51,10 @@ export class RabbitHandler {
                   userResponse,
                   uniqueMessageId
                 );
-                console.log(`Message ${message} was sent back to receiver with info ${userResponse}`);
-              }
-              else {
+                console.log(
+                  `Message ${message} was sent back to receiver with info ${userResponse}`
+                );
+              } else {
                 await this.sendMessageToQueue(
                   queueBack,
                   handlerResult.error,

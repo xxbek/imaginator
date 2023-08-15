@@ -5,6 +5,7 @@ volumes:
 
 services:
   receiver:
+    container_name: receiver
     build: ./receiver
     image: receiver
     environment:
@@ -12,19 +13,33 @@ services:
       - RABBIT_USER=rmuser
       - RABBIT_PASS=rmpassword
       - RABBIT_HOST=rabbitmq
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 5
     depends_on:
-      - rabbitmq
-
+      rabbitmq:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
 
   handler:
+    container_name: handler
     build: ./handler
     image: handler
     environment:
       - RABBIT_USER=rmuser
       - RABBIT_PASS=rmpassword
       - RABBIT_HOST=rabbitmq
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 5
     depends_on:
-      - rabbitmq
+      rabbitmq:
+          condition: service_healthy
 
   rabbitmq:
     image: rabbitmq:3.10.7-management
@@ -37,5 +52,10 @@ services:
     volumes:
       - rabbit_volume:/var/lib/rabbitmq
     ports:
-      - "15672:15672"
-      - "5672:5672"
+      - "127.0.0.1:15672:15672"
+      - "127.0.0.1:5672:5672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "check_running"]
+      interval: 10s
+      timeout: 5s
+      retries: 3

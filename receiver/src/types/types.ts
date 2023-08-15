@@ -1,13 +1,13 @@
 interface ProceedUserData {
-  proceedNum: number
+  proceedNum: number;
 }
 
-interface ResultFromQueue{
-  resultNum: number
-  error?: string
+interface ResultFromQueue {
+  resultNum: number;
+  error?: string;
 }
 
-interface responseHandler{
-  info: string
-  proceedNum: number
+interface responseHandler {
+  info: string;
+  proceedNum: number;
 }

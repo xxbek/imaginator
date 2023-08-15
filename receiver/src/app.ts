@@ -15,12 +15,11 @@ export const RESULT_QUEUE = 'result_queue';
 const app: Express = express();
 
 // middlewares
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 // routes
 app.use('/handle', handleRouter);
-
 
 app.listen(PORT, () => {
   console.log('Server is running..');

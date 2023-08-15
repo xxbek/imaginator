@@ -1,12 +1,12 @@
 interface HandlerFunction {
-  (userData: ProceedUserData): Promise<ResultUserData>
+  (userData: ProceedUserData): Promise<ResultUserData>;
 }
 
 interface ProceedUserData {
-  proceedNum: number
+  proceedNum: number;
 }
 
-interface ResultUserData{
-  resultNum: number
-  error?: string
+interface ResultUserData {
+  resultNum: number;
+  error?: string;
 }

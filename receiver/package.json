@@ -12,16 +12,7 @@
   "keywords": [],
   "scripts": {
     "start": "node build/src/app.js",
-    "build": "tsc",
-    "receiver": "tsc && node build/src/testReceiver.js",
-    "dev": "tsc && nodemon",
-    "lint": "gts lint",
-    "clean": "gts clean",
-    "compile": "tsc",
-    "fix": "gts fix",
-    "prepare": "npm run compile",
-    "pretest": "npm run compile",
-    "posttest": "npm run lint"
+    "build": "tsc"
   },
   "devDependencies": {
     "@types/amqplib": "^0.10.1",

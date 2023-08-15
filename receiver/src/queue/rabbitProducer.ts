@@ -74,7 +74,7 @@ export class RabbitProducer {
     }
     await channel.close();
 
-    const stringMessage = receivedMessage.content.toString()
+    const stringMessage = receivedMessage.content.toString();
     return JSON.parse(stringMessage);
   }
 
