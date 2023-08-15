@@ -23,8 +23,4 @@ FROM node:19.5.0-alpine
 COPY --from=base ./node_modules ./node_modules
 COPY --from=base /dist /dist
 
-
-# Expose port 8080
-EXPOSE 8080
-
 CMD ["npm", "start"]

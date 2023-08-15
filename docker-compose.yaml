@@ -4,6 +4,28 @@ volumes:
   rabbit_volume:
 
 services:
+  receiver:
+    build: ./receiver
+    image: receiver
+    environment:
+      - PORT=8080
+      - RABBIT_USER=rmuser
+      - RABBIT_PASS=rmpassword
+      - RABBIT_HOST=rabbitmq
+    depends_on:
+      - rabbitmq
+
+
+  handler:
+    build: ./handler
+    image: handler
+    environment:
+      - RABBIT_USER=rmuser
+      - RABBIT_PASS=rmpassword
+      - RABBIT_HOST=rabbitmq
+    depends_on:
+      - rabbitmq
+
   rabbitmq:
     image: rabbitmq:3.10.7-management
     hostname: rabbitmq

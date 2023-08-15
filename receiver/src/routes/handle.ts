@@ -1,11 +1,8 @@
-import Router, {Express, Request, Response} from 'express'
-import {RabbitProducer} from '../queue/rabbitProducer'
+import Router, {Express, Request, Response} from 'express';
+import {getDataFromHandler} from "../controllers/handleController.js";
 
 const handleRouter: Express = Router();
 
-handleRouter.post('/send', (req: Request, res: Response) => {
-  const queue = new RabbitProducer('amqp://localhost');
-}
-)
+handleRouter.post('/send', getDataFromHandler);
 
-export { handleRouter }
+export {handleRouter};

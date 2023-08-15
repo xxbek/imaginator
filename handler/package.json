@@ -1,8 +1,8 @@
 {
-  "name": "receiver",
+  "name": "",
   "version": "0.0.0",
   "description": "",
-  "main": "build/src/app.js",
+  "main": "build/src/run.js",
   "type": "module",
   "types": "build/src/index.d.ts",
   "files": [
@@ -11,10 +11,9 @@
   "license": "Apache-2.0",
   "keywords": [],
   "scripts": {
-    "start": "node build/src/app.js",
+    "start": "node build/src/run.js",
+    "handler": "tsc && node build/src/index.js",
     "build": "tsc",
-    "receiver": "tsc && node build/src/testReceiver.js",
-    "dev": "tsc && nodemon",
     "lint": "gts lint",
     "clean": "gts clean",
     "compile": "tsc",
@@ -25,16 +24,12 @@
   },
   "devDependencies": {
     "@types/amqplib": "^0.10.1",
-    "@types/express": "^4.17.17",
-    "@types/node": "^20.4.10",
+    "@types/node": "^20.4.5",
     "gts": "^5.0.0",
-    "nodemon": "^3.0.1",
-    "ts-node": "^10.9.1",
     "typescript": "~5.1.6"
   },
   "dependencies": {
     "amqplib": "^0.10.3",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2"
+    "dotenv": "^16.3.1"
   }
 }
