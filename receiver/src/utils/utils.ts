@@ -8,7 +8,7 @@ export async function prepareResponse(
   proceedMessage: ResultFromQueue
 ): Promise<responseHandler> {
   return {
-    info: 'Your number was proceeded',
+    info:  proceedMessage.error ? proceedMessage.error : 'Your number was proceeded',
     proceedNum: proceedMessage.resultNum,
   };
 }

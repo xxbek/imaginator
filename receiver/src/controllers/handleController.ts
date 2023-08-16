@@ -23,6 +23,7 @@ export const getDataFromHandler = async (req: Request, res: Response) => {
     await queue.closeConnection();
     const responseBody = await prepareResponse(resultFromHandler);
     res.status(200).send(responseBody);
+    console.log(`Message ${JSON.stringify(responseBody)} was sent back to user`)
   } else {
     res
       .status(400)

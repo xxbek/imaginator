@@ -38,7 +38,6 @@ export class RabbitHandler {
           async (rabbitMessage: ampq.ConsumeMessage | null) => {
             if (rabbitMessage) {
               const message = rabbitMessage.content.toString();
-              console.log(message);
               const uniqueMessageId: string =
                 rabbitMessage.properties.correlationId;
               const userData: ProceedUserData =
@@ -55,9 +54,10 @@ export class RabbitHandler {
                   `Message ${message} was sent back to receiver with info ${userResponse}`
                 );
               } else {
+                const handlerResultResponse = JSON.stringify(handlerResult)
                 await this.sendMessageToQueue(
                   queueBack,
-                  handlerResult.error,
+                  handlerResultResponse,
                   uniqueMessageId
                 );
               }

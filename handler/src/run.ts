@@ -14,7 +14,6 @@ const URL = `amqp://${USER}:${PASS}@${HOST}`;
 
 async function main() {
   const queue: RabbitHandler = new RabbitHandler(URL);
-  console.log(USER, PASS, HOST)
   await queue.connect();
   await queue.handleMessagesFromQueue(TASK_QUEUE, RESULT_QUEUE, customHandler);
 }
