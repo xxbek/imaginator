@@ -20,13 +20,19 @@ export const getDataFromHandler = async (req: Request, res: Response) => {
     );
     const resultFromHandler: ResultFromQueue =
       await queue.returnMessageFromQueueById(RESULT_QUEUE, uniqueMessageId);
-    await queue.closeConnection();
+
     const responseBody = await prepareResponse(resultFromHandler);
     res.status(200).send(responseBody);
     console.log(`Message ${JSON.stringify(responseBody)} was sent back to user`)
+    await queue.closeConnection()
   } else {
     res
       .status(400)
       .send(`Invalid data structure: "proceedNum" is empty: "${req.body}"`);
   }
+
 };
+
+function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}

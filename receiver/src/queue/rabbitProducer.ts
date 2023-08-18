@@ -59,6 +59,9 @@ export class RabbitProducer {
               if (rabbitMessage.properties.correlationId === uniqueMessageId) {
                 resolve(rabbitMessage);
               }
+              else {
+                channel.nack(rabbitMessage);
+              }
             }
           }
         );

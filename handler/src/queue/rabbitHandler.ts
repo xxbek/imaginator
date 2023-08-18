@@ -50,9 +50,6 @@ export class RabbitHandler {
                   userResponse,
                   uniqueMessageId
                 );
-                console.log(
-                  `Message ${message} was sent back to receiver with info ${userResponse}`
-                );
               } else {
                 const handlerResultResponse = JSON.stringify(handlerResult)
                 await this.sendMessageToQueue(

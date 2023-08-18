@@ -4,7 +4,7 @@ async function doComplexCalculations(
   userData: ProceedUserData
 ): Promise<ResultUserData> {
   const result: number = fib(userData.proceedNum);
-  await randomSleep(2, 4);
+  await randomSleep(1, 2);
   return {resultNum: result};
 }
 

@@ -8,6 +8,7 @@ services:
     container_name: receiver
     build: ./receiver
     image: receiver
+    restart: always
     environment:
       - PORT=8080
       - RABBIT_USER=rmuser
@@ -28,6 +29,7 @@ services:
     container_name: handler
     build: ./handler
     image: handler
+    restart: always
     environment:
       - RABBIT_USER=rmuser
       - RABBIT_PASS=rmpassword
